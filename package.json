@@ -1,0 +1,46 @@
+{
+    "name": "space-counter",
+    "displayName": "space-counter",
+    "description": "Counts leading spaces and speaks the result.",
+    "version": "0.0.1",
+    "publisher": "GGBK",
+    "engines": {
+        "vscode": "^1.83.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:space-counter.countLeadingSpaces"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "space-counter.countLeadingSpaces",
+                "title": "Count Leading Spaces"
+            }
+        ]
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^8.1.0",
+        "@types/mocha": "^10.0.2",
+        "@types/node": "^18.19.123",
+        "@types/vscode": "^1.83.0",
+        "@vscode/test-electron": "^2.3.4",
+        "eslint": "^8.50.0",
+        "glob": "^10.3.3",
+        "mocha": "^10.2.0",
+        "typescript": "^5.9.2"
+    },
+    "dependencies": {
+        "say": "^0.16.0"
+    }
+}
