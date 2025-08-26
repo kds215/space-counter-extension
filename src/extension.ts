@@ -19,10 +19,15 @@ export function activate(context: vscode.ExtensionContext) {
         try {
             // 2. Speak the message SYNCHRONOUSLY.
             // This blocks the extension until speech is complete.
-            execSync(`say "${message}"`);
+            if (process.platform === 'darwin') {
+                execSync(`say "${message}"`);
+            } else if (process.platform === 'win32') {
+                execSync(`powershell -command "Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('${message}');"`);
+            }
+            // Note: No Linux implementation yet
         } catch (err) {
             console.error(err);
-            vscode.window.showErrorMessage("Failed to execute 'say' command.");
+            vscode.window.showErrorMessage("Failed to execute text-to-speech command.");
             return; // Exit if speech fails
         }
 
