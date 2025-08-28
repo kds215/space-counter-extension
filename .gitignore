@@ -2,5 +2,3 @@ node_modules
 out
 .vscode
 .DS_Store
-*.vsix
-info/Gemini vsix install fails.txt
