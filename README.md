@@ -3,10 +3,10 @@
 
 ### VScode 'Space-Counter' Extension for the BLIND
 
-This VScode Extension 'Space-Counter' for the BLIND users
-to hear the number of leading space from the line their cursor is on.
+This VScode Extension 'Space-Counter' for the BLIND users is for
+hearing the number of leading space from the line their cursor is on.
 The extension toggles on/off and continues to speeks the leading 
-spaces count until turned off (activated again).
+spaces count until turned off (i.e. activated again).
 
 ### Built With and by
 
@@ -47,7 +47,7 @@ separated by comma.
 Save the updated, still open “keybindings.json” file in VScode with “ctrl+s”.
 
 You should now be able to use your shortcut-key to get the leading spaces count
-whenever your cursor is inside the editor window.
+activated whenever your cursor is inside the editor window.
 
 ### Prerequisites
 
@@ -65,7 +65,8 @@ use VScode (on macOS or Windows):
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-This VScode extension is for BLIND folks to get the leading spaces count from the line the cursor is on. 
+This VScode extension is for BLIND folks to get the leading spaces count
+from the line the cursor is on. This extionsion is modal and toggles ON/OFF.
 
 <!-- ROADMAP -->
 ## Roadmap
