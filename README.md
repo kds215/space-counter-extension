@@ -60,7 +60,7 @@ use VScode (on macOS or Windows):
 2. navigate to the Extensions top header bar that has on its right side a “…” drop down menu
    with the “Install from VSIX…” as last option.
 3. click “Install from VSIX…” to bring up the file manager.
-4. select the  "space-counter-0.0.x.vsix” file and click “install”.
+4. select the  "space-counter-0.0.3.vsix” file and click “install”.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
