@@ -1,29 +1,18 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a id="readme-top"></a>
 <!-- PROJECT SHIELDS -->
-
 <!-- TABLE OF CONTENTS -->
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+### VScode 'Space-Counter' Extension for the BLIND
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`, `project_license`
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+This VScode Extension 'Space-Counter' for the BLIND users
+to hear the number of leading space from the line their cursor is on.
+The extension toggles on/off and continues to speeks the leading 
+spaces count until turned off (activated again).
 
 ### Built With and by
 
 * GEMINI-CLI
 * In case you are wondering about the extension’s GGBK publisher name, 
   it stands for “Gemini-Guided-By-Klaus”.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -73,19 +62,10 @@ use VScode (on macOS or Windows):
 3. click “Install from VSIX…” to bring up the file manager.
 4. select the  "space-counter-0.0.x.vsix” file and click “install”.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 This VScode extension is for BLIND folks to get the leading spaces count from the line the cursor is on. 
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -110,10 +90,8 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Top contributors:
-
 
 
 <!-- LICENSE -->
@@ -121,20 +99,12 @@ Don't forget to give the project a star! Thanks again!
 
 Distributed under the project_license. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- CONTACT -->
 ## Contact
 
 Klaus Szyska - klaus@szyska.com
 
 Project Link: [https://github.com/kds215/space-counter-extension](https://github.com/kds215/space-counter-extension)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
