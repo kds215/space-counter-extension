@@ -1,21 +1,36 @@
 import * as vscode from 'vscode';
-import { execSync } from 'child_process';
+import { exec } from 'child_process';
+import * as say from 'say';
 
 let isCountModeActive = false;
 let statusBarItem: vscode.StatusBarItem;
 let lastLine: number | undefined;
 
+function stopSpeech() {
+    if (process.platform === 'darwin') {
+        say.stop();
+    } else if (process.platform === 'win32') {
+        // On Windows, we don't have a direct equivalent with the 'say' library.
+        // The 'exec' approach for PowerShell doesn't offer a simple cross-platform stop mechanism.
+        // This may need future refinement for Windows.
+    }
+}
+
 function countAndSpeak(editor: vscode.TextEditor) {
+    stopSpeech();
+
     const position = editor.selection.active;
     const line = editor.document.lineAt(position.line);
     const leadingSpaces = line.text.match(/^(\s*)/)?.[1].length || 0;
-    const message = `${leadingSpaces}`;
+    const spokenMessage = `${leadingSpaces}`;
+    const visualMessage = `Counted ${leadingSpaces} spaces`;
+    vscode.window.showInformationMessage(visualMessage);
 
     try {
         if (process.platform === 'darwin') {
-            execSync(`say "${message}"`);
+            say.speak(spokenMessage);
         } else if (process.platform === 'win32') {
-            execSync(`powershell -command "Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('${message}');"`);
+            exec(`powershell -command "Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('${spokenMessage}');"`);
         }
     } catch (err) {
         console.error(err);
@@ -24,11 +39,14 @@ function countAndSpeak(editor: vscode.TextEditor) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
+    console.log('Congratulations, your extension "space-counter" is now active!');
+
     statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
     statusBarItem.command = 'space-counter.countLeadingSpaces';
     context.subscriptions.push(statusBarItem);
 
     const commandDisposable = vscode.commands.registerCommand('space-counter.countLeadingSpaces', () => {
+        console.log('space-counter.countLeadingSpaces command executed');
         isCountModeActive = !isCountModeActive;
 
         const editor = vscode.window.activeTextEditor;
@@ -43,6 +61,7 @@ export function activate(context: vscode.ExtensionContext) {
             statusBarItem.text = `$(mute) Space Counter: OFF`;
             statusBarItem.hide();
             lastLine = undefined;
+            stopSpeech();
         }
     });
 
@@ -66,4 +85,5 @@ export function deactivate() {
     if (statusBarItem) {
         statusBarItem.dispose();
     }
+    stopSpeech();
 }
