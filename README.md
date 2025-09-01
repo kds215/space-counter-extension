@@ -3,10 +3,13 @@
 
 ### VScode 'Space-Counter' Extension for the BLIND
 
-This VScode Extension 'Space-Counter' for the BLIND users is for
-hearing the number of leading space from the line their cursor is on.
-The extension toggles on/off and continues to speeks the leading 
+This VScode Extension 'Space-Counter' for the BLIND users to
+hear the number of leading spaces spoken from the line their cursor is on.
+The extension toggles on/off and continues to speak the leading 
 spaces count until turned off (i.e. activated again).
+If the cursor is moved rapidly to another line while the speach is 
+still in progress then this output is canceled and overridden 
+by the cursor's current line space count. 
 
 ### Built With and by
 
@@ -60,13 +63,16 @@ use VScode (on macOS or Windows):
 2. navigate to the Extensions top header bar that has on its right side a “…” drop down menu
    with the “Install from VSIX…” as last option.
 3. click “Install from VSIX…” to bring up the file manager.
-4. select the  "space-counter-0.0.3.vsix” file and click “install”.
+4. from the (https://github.com/kds215/space-counter-extension/releases) Releases directory select the
+   latest "space-counter-0.0.?.vsix” file and click “install”.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 This VScode extension is for BLIND folks to get the leading spaces count
 from the line the cursor is on. This extionsion is modal and toggles ON/OFF.
+The text-to-voice output is overritten whenever the cursor is moving too fast
+and only the leading space count of the current line will be heard.
 
 <!-- ROADMAP -->
 ## Roadmap
