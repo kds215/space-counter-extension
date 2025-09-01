@@ -1,18 +1,20 @@
 import * as vscode from 'vscode';
-import { exec } from 'child_process';
+import { exec, ChildProcess } from 'child_process';
 import * as say from 'say';
 
 let isCountModeActive = false;
 let statusBarItem: vscode.StatusBarItem;
 let lastLine: number | undefined;
+let speechProcess: ChildProcess | null = null;
 
 function stopSpeech() {
     if (process.platform === 'darwin') {
         say.stop();
     } else if (process.platform === 'win32') {
-        // On Windows, we don't have a direct equivalent with the 'say' library.
-        // The 'exec' approach for PowerShell doesn't offer a simple cross-platform stop mechanism.
-        // This may need future refinement for Windows.
+        if (speechProcess) {
+            speechProcess.kill();
+            speechProcess = null;
+        }
     }
 }
 
@@ -30,7 +32,7 @@ function countAndSpeak(editor: vscode.TextEditor) {
         if (process.platform === 'darwin') {
             say.speak(spokenMessage);
         } else if (process.platform === 'win32') {
-            exec(`powershell -command "Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('${spokenMessage}');"`);
+            speechProcess = exec(`powershell -command "Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('${spokenMessage}');"`);
         }
     } catch (err) {
         console.error(err);
