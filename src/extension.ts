@@ -8,14 +8,14 @@ let lastLine: number | undefined;
 let speechProcess: ChildProcess | null = null;
 
 function stopSpeech() {
-    if (process.platform === 'darwin') {
+//    if (process.platform === 'darwin') {
         say.stop();
-    } else if (process.platform === 'win32') {
-        if (speechProcess) {
-            speechProcess.kill();
-            speechProcess = null;
-        }
-    }
+//    } else if (process.platform === 'win32') {
+//        if (speechProcess) {
+//            speechProcess.kill();
+//            speechProcess = null;
+//        }
+//    }
 }
 
 function countAndSpeak(editor: vscode.TextEditor) {
@@ -27,11 +27,11 @@ function countAndSpeak(editor: vscode.TextEditor) {
     const spokenMessage = `${leadingSpaces}`;
 
     try {
-        if (process.platform === 'darwin') {
+//        if (process.platform === 'darwin') {
             say.speak(spokenMessage);
-        } else if (process.platform === 'win32') {
-            speechProcess = exec(`powershell -command "Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('${spokenMessage}');"`);
-        }
+//        } else if (process.platform === 'win32') {
+//            speechProcess = exec(`powershell -command "Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('${spokenMessage}');"`);
+//        }
     } catch (err) {
         console.error(err);
         vscode.window.showErrorMessage("Failed to execute text-to-speech command.");
@@ -39,14 +39,14 @@ function countAndSpeak(editor: vscode.TextEditor) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-    console.log('Congratulations, your extension "space-counter" is now active!');
+//    console.log('Congratulations, your extension "space-counter" is now active!');
 
     statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
     statusBarItem.command = 'space-counter.countLeadingSpaces';
     context.subscriptions.push(statusBarItem);
 
     const commandDisposable = vscode.commands.registerCommand('space-counter.countLeadingSpaces', () => {
-        console.log('space-counter.countLeadingSpaces command executed');
+//        console.log('space-counter.countLeadingSpaces command executed');
         isCountModeActive = !isCountModeActive;
 
         const editor = vscode.window.activeTextEditor;
