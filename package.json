@@ -2,7 +2,7 @@
     "name": "space-counter",
     "displayName": "space-counter",
     "description": "Counts leading spaces and speaks the result.",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "publisher": "GGBK",
     "engines": {
         "vscode": "^1.83.0"
