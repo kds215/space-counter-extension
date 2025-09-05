@@ -25,8 +25,8 @@ function countAndSpeak(editor: vscode.TextEditor) {
     const line = editor.document.lineAt(position.line);
     const leadingSpaces = line.text.match(/^(\s*)/)?.[1].length || 0;
     const spokenMessage = `${leadingSpaces}`;
-    const visualMessage = `Counted ${leadingSpaces} spaces`;
-    vscode.window.showInformationMessage(visualMessage);
+    // const visualMessage = `Counted ${leadingSpaces} spaces`;
+    // vscode.window.showInformationMessage(visualMessage);
 
     try {
         if (process.platform === 'darwin') {
@@ -60,7 +60,7 @@ export function activate(context: vscode.ExtensionContext) {
                 countAndSpeak(editor);
             }
         } else {
-            statusBarItem.text = `$(mute) Space Counter: OFF`;
+            // statusBarItem.text = `$(mute) Space Counter: OFF`;
             statusBarItem.hide();
             lastLine = undefined;
             stopSpeech();
